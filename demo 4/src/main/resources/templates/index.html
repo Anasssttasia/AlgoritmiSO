@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificator de procese</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Alegeți algoritmul de planificare</h1>
+        <form action="/processScheduler" method="get">
+            <div class="form-group">
+                <label for="n">Număr procese:</label>
+                <input type="number" id="n" name="n" required><br>
+            </div>
+
+            <div id="processInputs"></div>
+
+            <div class="form-group">
+                <label for="algorithm">Alege algoritmul:</label>
+                <select id="algorithm" name="algorithm">
+                    <option value="FCFS">FCFS</option>
+                    <option value="SJF">SJF</option>
+                    <option value="RoundRobin">RoundRobin</option>
+                </select><br>
+            </div>
+
+            <div class="form-group">
+                <label for="quantum">Quantum (pentru Round Robin):</label>
+                <input type="number" id="quantum" name="quantum"><br>
+            </div>
+
+            <button type="submit">Trimite</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("n").addEventListener("change", function() {
+            let numProcesses = this.value;
+            let container = document.getElementById("processInputs");
+            container.innerHTML = ""; // Resetează câmpurile anterioare
+
+            for (let i = 0; i < numProcesses; i++) {
+                container.innerHTML += `
+                    <div class="form-group">
+                        <label for="burstTime${i}">Timp de execuție pentru procesul ${i + 1}:</label>
+                        <input type="number" id="burstTime${i}" name="burstTimes" required><br>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

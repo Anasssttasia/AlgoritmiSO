@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+    <form action="/api/convert" method="get">
+        <label for="usdAmount">Amount in USD:</label>
+        <input type="number" id="usdAmount" name="usdAmount" required>
+        <br>
+        <label for="choice">Choose a currency:</label>
+        <select id="choice" name="choice" required>
+            <option value="1">EUR</option>
+            <option value="2">GBP</option>
+            <option value="3">INR</option>
+        </select>
+        <br>
+        <button type="submit">Convert</button>
+    </form>
+    <h2>Converted Amount: <span id="result"></span></h2>
+</body>
+</html>
